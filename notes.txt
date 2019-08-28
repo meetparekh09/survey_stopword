@@ -1,0 +1,36 @@
+Abstract
+    General summary of what we are surveying and the purpose behind the survey
+Introduction
+    Stopwords and why is it required
+    Requirement for automatic method? (scalability across different languages)
+    Language specific issues (Arabic) - (tokenization)
+    Underlining different methods of automatic stoplist generation
+    General outline of paper
+
+Methods of tokenization: (optional)
+    Language specific
+
+Methods:
+    Zipf's (TF, IDF)
+    Statistical Methods (KL Divergence, Entropy)
+    Machine Learning Methods
+    Hybrid Methods
+    Unique Methods
+Results
+    stopword list accuracy (comparison with standard manual list)
+    computation time
+    scalability across different languages
+Conclusion
+    Possibly think of your own method before writing this.
+Future Work    
+
+Purpose:
+    comparing array of methods for automatic stopword list generation which is computationally efficient (optional) and scalable across different languages
+
+tokenization (optional)
+
+
+For each method:
+    method explanation
+    measuring criteria
+    corpus used

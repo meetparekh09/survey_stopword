@@ -1,0 +1,214 @@
+\documentclass{article}
+
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+
+\title{A survey on methods for automatic generation of stop words}
+
+
+\author{
+  Yash J. Patel \\
+  Department of Computer Science\\
+  New Jersey Institute of Technology\\
+  Newark, NJ 07102 \\
+  \texttt{yash.j.patel.95@gmail.com} \\
+  %% examples of more authors
+   \And
+  Meet B. Parekh \\
+  Software Engineer\\
+  CB Insights\\
+  New York, NY 10018 \\
+  \texttt{meetparekh09@gmail.com} \\
+  %% \AND
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+  %% \And
+  %% Coauthor \\
+  %% Affiliation \\
+  %% Address \\
+  %% \texttt{email} \\
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Stopword is defined as a word that has high stable frequency across documents and carries low information. Stop word elimination is a standard pre-processing step in information retrieval(IR) systems and text mining. Stop word elimination reduces dimensionality which improves indexing and query efficiency in IR systems and accuracy of data model by removing noise. Modern systems and researches focus on text mining across multiple languages including rare ones, which requires stopword list for multiple languages including rare ones. This calls for the need of automatic method of stopword list generation which scales across different languages. In this paper, we survey various automatic methods used for stopword list genration across different languages and categorize them. We also scrutinize various methods on the basis of how well it generalizes across multilingual contexts. We categorize various methods into five categories viz. Zipfian methods, Statistical methods, Machine Learning methods, Hybrid methods, Unique Methods and discover that Zipfian, Statistical  and Hybrid  scales well across different languages and Hybrid method overcomes the bias introduced by either Zipfian or Statistical methods.
+\end{abstract}
+
+
+% keywords can be removed
+\keywords{First keyword \and Second keyword \and More}
+
+
+\section{Introduction}
+In text processing, stopword is defined as a word which carries very low information and has a high stable frequency \cite{cite1} of occurrence across documents. According to Francis and Kučera \cite{cite2}, the ten most frequently occurring words in English typically account for 20 to 30 percent of the tokens in a document. According to another study, over 50\% of all words in typical small english passage are contained within a list of 135 words\cite{cite3}. Also, In TREC (Text REtrieval Conference) it was observed that the top 33 stop words account for 30\% of all the words \cite{cite4}. Apart from the characteristic high frequency stopwords are also known to carry low information i.e. low entropy \cite{cite5}.
+
+Stopword elimination is a standard pre-processing step in IR systems and text mining. Due to high frequency of stopwords, removal of stopwords is observed to reduce the size of indexing structure considerably and obtain a compression of more than 40\% for IR systems in digital libraries\cite{cite6}. Also, for text mining tasks such as clustering, classification, sentiment analysis etc. elimination of stopwords could contribute to reduce the size of the text feature space considerably and help to speed up the calculation and increase the accuracy of text classification \cite{cite7}.
+
+While standard stopword list viz. Brown stopword list \cite{cite9} and Van stopword list \cite{cite10} exists for English language, the methodology used to prepare these lists cannot be scaled to different languages. Although majority of text mining and IR systems have focused on English language, it is observed that the share of non English documents on the internet is rising continuously and there is a steady increase in demand for multilingual IR systems and cross-lingual text mining across Professionals, Researchers and Organisations \cite{cite8}. This calls for a need of automatic method to generate stopword list which can be generalized across different languages.
+
+In this paper we survey various methods used for automatic generation of stopword list and categorize them into five categories viz. 1. Zipfian methods based on zipf's law, 2. Statistical methods such as KL divergence, entropy etc., 3. Machine Learning methods that use machine learning models, 4. Hybrid methods that use some combination of above three methods especially combination of Zipfian and Statistical methods, and 5. Unique methods that uses unique methods that don't fall in any of the four categories. We also scrutinize these methods on the basis of its scalability across different languages i.e. how well it generalizes across languages. We observed that Hybrid methods that use the combination of Zipfian and Statistical methods generally scale well across different languages and also it overcomes the bias of either Zipfian or Statistical methods.
+
+
+
+\section{Headings: first level}
+\label{sec:headings}
+
+\lipsum[4] See Section \ref{sec:headings}.
+
+\subsection{Headings: second level}
+\lipsum[5]
+\begin{equation}
+\xi _{ij}(t)=P(x_{t}=i,x_{t+1}=j|y,v,w;\theta)= {\frac {\alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}{\sum _{i=1}^{N} \sum _{j=1}^{N} \alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}}
+\end{equation}
+
+\subsubsection{Headings: third level}
+\lipsum[6]
+
+\paragraph{Paragraph}
+\lipsum[7]
+
+\section{Examples of citations, figures, tables, references}
+\label{sec:others}
+\lipsum[8] \cite{kour2014real,kour2014fast} and see \cite{hadash2018estimate}.
+
+The documentation for \verb+natbib+ may be found at
+\begin{center}
+  \url{http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf}
+\end{center}
+Of note is the command \verb+\citet+, which produces citations
+appropriate for use in inline text.  For example,
+\begin{verbatim}
+   \citet{hasselmo} investigated\dots
+\end{verbatim}
+produces
+\begin{quote}
+  Hasselmo, et al.\ (1995) investigated\dots
+\end{quote}
+
+\begin{center}
+  \url{https://www.ctan.org/pkg/booktabs}
+\end{center}
+
+
+\subsection{Figures}
+\lipsum[10] 
+See Figure \ref{fig:fig1}. Here is how you add footnotes. \footnote{Sample of the first footnote.}
+\lipsum[11] 
+
+\begin{figure}
+  \centering
+  \fbox{\rule[-.5cm]{4cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+  \caption{Sample figure caption.}
+  \label{fig:fig1}
+\end{figure}
+
+\subsection{Tables}
+\lipsum[12]
+See awesome Table~\ref{tab:table}.
+
+\begin{table}
+ \caption{Sample table title}
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+    \multicolumn{2}{c}{Part}                   \\
+    \cmidrule(r){1-2}
+    Name     & Description     & Size ($\mu$m) \\
+    \midrule
+    Dendrite & Input terminal  & $\sim$100     \\
+    Axon     & Output terminal & $\sim$10      \\
+    Soma     & Cell body       & up to $10^6$  \\
+    \bottomrule
+  \end{tabular}
+  \label{tab:table}
+\end{table}
+
+\subsection{Lists}
+\begin{itemize}
+\item Lorem ipsum dolor sit amet
+\item consectetur adipiscing elit. 
+\item Aliquam dignissim blandit est, in dictum tortor gravida eget. In ac rutrum magna.
+\end{itemize}
+
+
+\bibliographystyle{unsrt}  
+%\bibliography{references}  %%% Remove comment to use the external .bib file (using bibtex).
+%%% and comment out the ``thebibliography'' section.
+
+
+%%% Comment out this section when you \bibliography{references} is enabled.
+\begin{thebibliography}{1}
+\bibitem{cite1}
+Feng Zou, Fu Lee Wang, Xiaotie Deng, Song Han, Lu Sheng Wang
+\newblock Automatic Construction of Chinese Stop Word List
+\newblock In {\em Proceedings of the 5th WSEAS International Conference on Applied Computer Science, Hangzhou, China, April 16-18, 2006 (pp1010-1015)}
+
+\bibitem{cite2}
+Burchfield, R. 
+\newblock Frequency Analysis of English Usage: Lexicon and Grammar.
+\newblock {\em By W. Nelson Francis and Henry KuÄera with the assistance of Andrew W. Mackie. Boston: Houghton Mifflin. 1982. x + 561. Journal of English Linguistics, 18(1), 64 “70.}
+
+\bibitem{cite3}
+\ Hart, G.W.
+\newblock To Decode Short Cryptograms
+\newblock In {\em Communications of the ACM, 37, 9, September 1994, 102-108.}
+
+\bibitem{cite4}
+Witten I, Moffat A and Bell T.
+\newblock Managing gigabytes: Compressing and indexing documents and image
+\newblock {\em 2nd edn. San Francisco, CA: Morgan Kaufmann,1999.}
+
+\bibitem{cite5}
+Khalifa Chekima and Rayner Alfred
+\newblock An Automatic Construction of Malay Stop Words Based on Aggregation Method
+\newblock {\em SCDS 2016, CCIS 652, pp. 180–189, 2016}
+
+\bibitem{cite6}
+B.Y. Ricardo and R.N. Berthier
+\newblock Modern Information Retrieval
+\newblock {\em Addison Wesley Longman Publishing Co. Inc.}
+
+\bibitem{cite7}
+C. Silva, and B. Ribeiro
+\newblock The importance of stop word removal on recall values in text categorization
+\newblock {\em Neural Net- works, 320–24, 2003}
+
+\bibitem{cite8}
+Ralf Steinberger
+\newblock A survey of methods to ease the development of highly
+multilingual text mining applications
+\newblock {\em Lang Resources & Evaluation (2012) 46:155–176}
+
+\bibitem{cite9}
+Fox, C.
+\newblock Information retrieval data structures and algorithms. Lexical Analysis and Stoplists, pp. 102– 130
+\newblock {\em Englewood Cliffs, N.J :  Prentice Hall (1992)}
+
+\bibitem{cite10}
+Van Rijisbergen, C.J.
+\newblock Information Retrieval
+\newblock {\em Butterworths, London (1975)}
+
+\end{thebibliography}
+
+
+\end{document}
